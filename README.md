@@ -173,6 +173,10 @@ sudo docker run -it --rm \
     -v $(pwd):/tensorflow-yolov4-tflite-master \
     nvcr.io/nvidia/tensorflow:20.03-tf2-py3 bash
 
+pip install -r ./requirements-gpu.txt
+pip install tensorflow_serving==2.1.0
+apt update && apt install -y libsm6 libxext6 libxrender-dev
+
 # convert to saved model
 python save_model.py --weights ./data/yolov4.weights --output ./checkpoints/yolov4.tf --input_size 416 --model yolov4
 
